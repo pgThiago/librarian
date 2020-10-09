@@ -77,6 +77,9 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         borderColor: "#6159E6",
         backgroundColor: '#34325E',
+
+        opacity: 0.9,
+        elevation: 5,
     },
 
     buttonText: {

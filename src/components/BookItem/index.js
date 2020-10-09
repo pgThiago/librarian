@@ -4,7 +4,7 @@ import { View, Text, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { RectButton } from 'react-native-gesture-handler';
 
-
+import Icon from 'react-native-vector-icons/Ionicons';
 
 function BookItem({ title, author, email, pages, price, children }){
 
@@ -17,12 +17,14 @@ function BookItem({ title, author, email, pages, price, children }){
     return (
         <RectButton onPress={moreInfomationsAboutBook}>
             <View style={styles.container}>
-
+        
+                <Icon name="book" size={40} color="#FFF" style={styles.bookIcon} />
 
                 <Text style={styles.title}> Title:  <Text style={styles.content}> {title}  </Text> </Text>
                 <Text style={styles.title}> Author: <Text style={styles.content}> {author} </Text> </Text>
 
                 { children } 
+
             </View>
         </RectButton>
     )
@@ -33,7 +35,7 @@ const styles = StyleSheet.create({
    
     container: {
         width: '95%',
-        height: 170,
+        height: 250,
         
         justifyContent: "center",
         alignSelf: 'center',
@@ -55,6 +57,12 @@ const styles = StyleSheet.create({
         opacity: 0.9,
         elevation: 5,
 
+    },
+
+    bookIcon: {
+        position: 'absolute',
+        top: 5,
+        right: 7,
     },
     
     title: {

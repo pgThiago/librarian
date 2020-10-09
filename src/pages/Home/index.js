@@ -2,10 +2,8 @@ import React from 'react';
 import { View, Text, ImageBackground, StyleSheet, TouchableOpacity } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
+import bg from '../../assets/book_lover.png';
 
-import bg from '../../assets/book_lover.svg';
-
-import SvgUri from 'react-native-svg-uri';
 
 function Home(){
 
@@ -16,21 +14,21 @@ function Home(){
     }    
     
     return (
-        <SvgUri source={require('../../assets/book_lover.svg')} style={styles.background}>
+        <ImageBackground source={bg} style={styles.background}>
             <View style={styles.container}>
                 <TouchableOpacity onPress={goToBookList} style={styles.button}>
-                    <Text style={styles.buttonText}>Let's Read, Fell!</Text>
+                    <Text style={styles.buttonText}>Let's Read, Fella!</Text>
                 </TouchableOpacity>
             </View>
-        </SvgUri>
+        </ImageBackground>
     )
 }
 
 
 const styles = StyleSheet.create({
     background: {
-        width: 200,
-        height: 200,
+        flex: 1,
+        resizeMode: "contain"
     },
 
     container: {
@@ -52,6 +50,9 @@ const styles = StyleSheet.create({
         bottom: '23%',
         
         backgroundColor: '#34325E',
+        
+        opacity: 0.9,
+        elevation: 5,
 
     },
 

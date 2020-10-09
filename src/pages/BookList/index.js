@@ -31,7 +31,7 @@ function BookList(){
                         <BookItem 
                             title={item.title}
                             author={item.user.name}
-                            email={item.email}
+                            email={item.user.email}
                             price={item.price}
                             pages={item.pages}
                         />
