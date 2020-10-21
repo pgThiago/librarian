@@ -1,26 +1,18 @@
-<h2 align="center">React Native App consuming an API to display a list of books.</h2>
+<h2 align="center">
+    2 Pages / 3 Components React Native App consuming an API to display a list of fake books.
+</h2>
 
 ---
 
-<p float="left">
-    <img src="./.github/home_com.librarian.jpg" 
+<p align="center">
+    <img src="./.github/librarian.gif" 
     width="30%" 
     height="30%"/>
-    <img src="./.github/booklist_com.librarian.jpg"
-    width="30%" 
-    height="30%"
-    />
-    <img src="./.github/item_com.librarian.jpg" 
-    width="30%" 
-    height="30%"
-    />
 </p>
 
 ---
 
-## API and Web version developed by: [Ewerton Bello](https://github.com/EwertonBello/CadBook), right from Abaeté.
-
-## [Link](https://cadbook.herokuapp.com/) to the web version.
+## API and [Web application](https://cadbook.herokuapp.com/) developed by [Ewerton Bello](https://github.com/EwertonBello/CadBook), right from Abaeté.
 
 ---
 
@@ -39,3 +31,30 @@
 
 ---
 
+
+  <h1 align="center" font-size="40px">
+    Dependencies used
+  </h1>
+
+ ## -> react
+ ## -> react-native
+ ## -> typescript
+ ## -> react-native-community/masked-view
+ ## -> react-navigation/native
+ ## -> react-navigation/stack
+ ## -> react-native-vector-icons
+ ## -> react-native-webview
+ ## -> react-native-gesture-handler
+ ## -> react-native-safe-area-context
+ ## -> react-native-screens
+ ## -> babel/core
+ ## -> babel/runtime 
+ ## -> babel-jest 
+ ## -> react-native-community/eslint-config
+ ## -> eslint 
+ ## -> jest
+ ## -> metro-react-native-babel-preset
+ ## -> react-test-renderer
+ ## -> types/react
+ ## -> types/react-native
+ ## -> types/react-native-vector-icons
