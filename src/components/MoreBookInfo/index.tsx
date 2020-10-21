@@ -23,8 +23,10 @@ function MoreBookInfo(){
     const { name, email, title, price, pages } = route.params as BookItemInfo;
 
     function buyButton(){
-        alert("Sorry, we don't do that here.");
-        navigate('RepoView');
+        alert(`Sorry, we don't do that here. Check out the code.`);
+        setTimeout(() => {
+            navigate('RepoView');
+        }, 4000)
     }
 
     return (

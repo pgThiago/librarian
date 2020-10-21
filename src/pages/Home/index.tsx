@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, ImageBackground, StyleSheet, TouchableOpacity } from 'react-native';
 
-import { useNavigation } from '@react-navigation/native';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import bg from '../../assets/book_lover.png';
 
 
@@ -16,15 +16,19 @@ function Home(){
     }    
 
     useEffect(() => {
-        
-        async function getBooks(){
-            const response = await (await fetch('https://cadbook.herokuapp.com/api/v1/books/')).json();
-            setBooks(response.data);
-        }
 
-        getBooks();
+        fetch('https://cadbook.herokuapp.com/api/v1/books/').then(response => { 
             
-    }, []); 
+            response.json().then(datas => {
+                setBooks(datas.data);
+            })
+
+        })
+        .catch(error => {
+            console.log(error);
+        })
+            
+    }, []);
 
     if(books.length === 0){
         return(

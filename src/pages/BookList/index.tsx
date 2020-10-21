@@ -21,15 +21,19 @@ const BookList: React.FC = () => {
     const [books, setBooks] = useState<Book[]>([]);
 
     useEffect(() => {
-        
-        async function getBooks(){
-            const response = await (await fetch('https://cadbook.herokuapp.com/api/v1/books/')).json();
-            setBooks(response.data);
-        }
-        
-        getBooks();
+
+        fetch('https://cadbook.herokuapp.com/api/v1/books/').then(response => { 
             
-    }, []); 
+            response.json().then(datas => {
+                setBooks(datas.data);
+            })
+
+        })
+        .catch(error => {
+            console.log(error);
+        })
+            
+    }, []);
 
     if(books.length === 0){
         return(
