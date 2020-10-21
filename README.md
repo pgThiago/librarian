@@ -39,4 +39,3 @@
 
 ---
 
-# PS: I know nobody is going to use this README, i'm just practicing documentation because it is as important as the code itself ;p.
