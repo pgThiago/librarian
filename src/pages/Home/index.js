@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, ImageBackground, StyleSheet, TouchableOpacity } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
@@ -7,17 +7,30 @@ import bg from '../../assets/book_lover.png';
 
 function Home(){
 
+    const [books, setBooks] = useState([]);
+
     const { navigate } = useNavigation();
 
     function goToBookList(){
         navigate('BookList')
     }    
+
+    useEffect(() => {
+        
+        async function getBooks(){
+            const response = await (await fetch('https://cadbook.herokuapp.com/api/v1/books/')).json();
+            setBooks(response.data);
+        }
+
+        getBooks();
+            
+    }, []); 
     
     return (
         <ImageBackground source={bg} style={styles.background}>
             <View style={styles.container}>
                 <TouchableOpacity onPress={goToBookList} style={styles.button}>
-                    <Text style={styles.buttonText}>Let's Read, Fella!</Text>
+                <Text style={styles.buttonText}>{books.length} Books, let's read?</Text>
                 </TouchableOpacity>
             </View>
         </ImageBackground>
@@ -37,11 +50,14 @@ const styles = StyleSheet.create({
     },
 
     button: {
-        borderRadius: 20,
+        borderRadius: 10,
         borderColor: "#6159E6",
         
         width: '97%',
         height: '15%',
+
+        borderWidth: 1,
+        borderColor: "#6159E6",
         
         alignItems: 'center',
         justifyContent: 'center',
@@ -49,7 +65,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         bottom: '23%',
         
-        backgroundColor: '#34325E',
+        backgroundColor: '#F0F0FF',
         
         opacity: 0.9,
         elevation: 5,
@@ -58,7 +74,7 @@ const styles = StyleSheet.create({
 
     buttonText: {
         fontSize: 25,
-        color: '#F0F0FF',
+        color: '#6159E6',
         fontFamily: 'monospace'
     }
 
