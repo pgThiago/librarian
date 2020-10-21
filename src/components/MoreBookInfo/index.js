@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ImageBackground } from 'react-native';
+import { Text, StyleSheet, TouchableOpacity, ImageBackground } from 'react-native';
+import { WebView } from 'react-native-webview';
 
 import bg from '../../assets/book_lover.png';
 
@@ -11,6 +12,7 @@ function MoreBookInfo({ route }){
 
     function buyButton(){
         alert("Sorry, we don't do that here.");
+        return <WebView source={{ uri: 'https://github.com/pgThiago' }} />;
     }
 
     return (
@@ -43,51 +45,50 @@ const styles = StyleSheet.create({
     
     background: {
         flex: 1,
-        resizeMode: "cover",
+        resizeMode: "contain",
+        alignItems: 'center',
     },
 
     title: {
         fontSize: 25,
         fontWeight: 'bold',
         fontFamily: 'monosoto',
-        color: '#F0F0FF',
+        color: '#6159E6',
     },
 
     content: {
         fontSize: 20,
         fontFamily: 'monosoto',
         fontWeight: 'normal',
-        color: '#F0F0FF',
+        color: '#6159E6',
     },
 
     button: {
-        width: '97%',
-        height: 90,
-        
-        justifyContent: "center",
-        alignItems: 'center',
-        alignSelf: 'center',
-        
-        marginTop: 10,
-        marginBottom: 2,
-        
-        padding: 7,
-
-        borderWidth: 2,
-        borderRadius: 20,
+        borderRadius: 10,
         borderColor: "#6159E6",
-        backgroundColor: '#34325E',
+        
+        width: '97%',
+        height: '15%',
+        
+        alignItems: 'center',
+        justifyContent: 'center',
 
+        position: 'absolute',
+        bottom: '40%',
+
+        borderWidth: 1,
+        borderColor: "#6159E6",
+        
+        backgroundColor: '#F0F0FF',
+        
         opacity: 0.9,
         elevation: 5,
     },
 
     buttonText: {
-        fontSize: 40,
-        color: '#F0F0FF',
-        fontFamily: 'monospace',
-        fontWeight: 'bold',
-        
+        fontSize: 25,
+        color: '#6159E6',
+        fontFamily: 'monospace'
     }
 
 })
