@@ -18,7 +18,7 @@ function BookItem({ title, author, email, pages, price, children }){
         <RectButton onPress={moreInfomationsAboutBook}>
             <View style={styles.container}>
         
-                <Icon name="book" size={40} color="#FFF" style={styles.bookIcon} />
+                <Icon name="book" size={40} color="#6159E6" style={styles.bookIcon} />
 
                 <Text style={styles.title}> Title:  <Text style={styles.content}> {title}  </Text> </Text>
                 <Text style={styles.title}> Author: <Text style={styles.content}> {author} </Text> </Text>
@@ -49,10 +49,10 @@ const styles = StyleSheet.create({
         paddingLeft: 10,
 
         borderWidth: 1,
-        borderRadius: 7,
+        borderRadius: 10,
         borderColor: "#6159E6",
 
-        backgroundColor: '#34325E',
+        backgroundColor: '#F0F0FF',
 
         opacity: 0.9,
         elevation: 5,
@@ -69,14 +69,14 @@ const styles = StyleSheet.create({
         fontSize: 25,
         fontWeight: 'bold',
         fontFamily: 'monosoto',
-        color: '#F0F0FF',
+        color: '#6159E6',
     },
 
     content: {
         fontSize: 20,
         fontFamily: 'monosoto',
         fontWeight: 'normal',
-        color: '#F0F0FF',
+        color: '#6159E6',
     }
 
 })
