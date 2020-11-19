@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, ImageBackground, StyleSheet, FlatList } from 'react-native';
-
 import bg from '../../assets/book_lover.png';
-
 import BookItem from '../../components/BookItem';
+
+import api from '../../services/api';
 
 interface Book {
     id: string;
@@ -21,18 +21,10 @@ const BookList: React.FC = () => {
     const [books, setBooks] = useState<Book[]>([]);
 
     useEffect(() => {
-
-        fetch('https://cadbook.herokuapp.com/api/v1/books/').then(response => { 
-            
-            response.json().then(datas => {
-                setBooks(datas.data);
-            })
-
+        api.get('books').then(response => {
+            const { data: booksInfo } = response.data;
+            setBooks(booksInfo);
         })
-        .catch(error => {
-            console.log(error);
-        })
-            
     }, []);
 
     if(books.length === 0){

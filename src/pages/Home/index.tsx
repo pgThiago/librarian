@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, ImageBackground, StyleSheet, TouchableOpacity } from 'react-native';
-
-import { useFocusEffect, useNavigation } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import bg from '../../assets/book_lover.png';
 
+import api from '../../services/api';
 
 function Home(){
 
@@ -16,18 +16,10 @@ function Home(){
     }    
 
     useEffect(() => {
-
-        fetch('https://cadbook.herokuapp.com/api/v1/books/').then(response => { 
-            
-            response.json().then(datas => {
-                setBooks(datas.data);
-            })
-
+        api.get('books').then(response => {
+            const { data: booksInfo } = response.data;
+            setBooks(booksInfo);
         })
-        .catch(error => {
-            console.log(error);
-        })
-            
     }, []);
 
     if(books.length === 0){
