@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  SafeAreaView,
   StatusBar,
 } from 'react-native';
 
@@ -9,7 +8,7 @@ import Routes from './src/routes';
 const App = () => {
   return (
     <>
-      <StatusBar barStyle="light-content" />
+      <StatusBar barStyle="dark-content" backgroundColor="#FFF" />
         <Routes />
     </>
   );

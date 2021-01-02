@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, FlatList, Image, ScrollView } from 'react-native';
-import { RectButton } from 'react-native-gesture-handler';
+import React, { useState, useEffect, ReactText  } from 'react';
+import { View, Text, StyleSheet, FlatList, Image } from 'react-native';
+import { RectButton, TextInput } from 'react-native-gesture-handler';
 
 import api from '../../services/api';
 
@@ -17,6 +17,8 @@ interface Book {
 }
 
 const BookList: React.FC = () => {
+    
+    const [inputText, setInputText] = useState("");
 
     const [books, setBooks] = useState<Book[]>([]);
     const [bookSelected, setBookSelected] = useState({
@@ -30,7 +32,7 @@ const BookList: React.FC = () => {
         })
     }, []);
 
-    function handleBookSelected(itemId: any){
+    function handleBookSelected(itemId: string){
         const book = books.filter(item => {
             return item.id === itemId ? item : null;
         });
@@ -38,6 +40,19 @@ const BookList: React.FC = () => {
             imgUri: book[0].imgUri, price: book[0].price, pages: book[0].pages, title: book[0].title, user: {email: book[0].user.email, name: book[0].user.name}
         });        
     }
+
+    function handleSearchBook(inputParam: string){
+        setInputText(inputParam);
+        console.log(inputText)
+        for(const book of books){
+            if(book.title.toLowerCase().includes(inputText.toLowerCase())){
+                console.log(inputText.toLowerCase());
+                setBookSelected({
+                    imgUri: book.imgUri, price: book.price, pages: book.pages, title: book.title, user: {email: book.user.email, name: book.user.name}
+                });
+            }        
+        }        
+    }    
 
     useEffect(() => {
         for(let i = 0; i < books.length; i++){
@@ -56,7 +71,13 @@ const BookList: React.FC = () => {
     return (
         <View style={styles.container}>
             <Text style={styles.appTitle}>Librarian</Text>
-            { bookSelected.price != '' && (
+            <TextInput
+                placeholder="Search"
+                value={inputText}
+                onChangeText={(text: ReactText) => handleSearchBook(text.toString()) }
+                style={styles.inputSearch}
+            />
+            { bookSelected.price != '' ? (
                 <View style={styles.bookSelected}>
                     <Image style={styles.imgBookSelected} source={{ uri: bookSelected.imgUri }}></Image>
                     <View style={styles.textContentBookSelected}>
@@ -65,6 +86,16 @@ const BookList: React.FC = () => {
                         <Text style={styles.textAuthorBookSelected}>{bookSelected.user.name}</Text>
                         <Text style={styles.textPagesBookSelected}>{bookSelected.pages} pages</Text>
                         <Text style={styles.textEmailBookSelected}>{bookSelected.user.email}</Text>
+                    </View>
+                </View>
+            ) : (
+                <View style={styles.bookSelected}>
+                    <View style={styles.textContentBookSelected}>
+                        <Text style={styles.textPriceBookSelected}></Text>
+                        <Text style={styles.textTitleBookSelected}></Text>
+                        <Text style={styles.textAuthorBookSelected}></Text>
+                        <Text style={styles.textPagesBookSelected}></Text>
+                        <Text style={styles.textEmailBookSelected}></Text>
                     </View>
                 </View>
             ) }
@@ -90,43 +121,124 @@ const BookList: React.FC = () => {
 const styles = StyleSheet.create({    
 
     container: {
-        justifyContent: 'center',
-        alignItems: 'center',
-
         backgroundColor: '#FFF',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
 
     appTitle: {
         fontSize: 25,
-        marginTop: 10,
+        marginTop: 5,
         fontFamily: 'normal',
         color: '#5c5c5c',
+
+        alignSelf: 'center',
+    },
+
+    inputSearch: {
+        borderBottomColor: '#5c5c5c',
+        borderBottomWidth: 0.2,
+        borderBottomLeftRadius: 5,
+        borderBottomRightRadius: 5,
+        borderStartWidth: 2,
+        marginBottom: 10,
+
+        fontSize: 16,
+
+        alignSelf: 'center',
     },
     
     bookSelected: {
-        width: '95%',
-        height: '60%',
-        marginTop: 10,
-        justifyContent: 'center',
         alignItems: 'center',
+        justifyContent: 'center',
+        width: '95%',
+        height: 390,
+        marginTop: 1,
         backgroundColor: '#F0F0F4',
-        borderRadius: 10,
+        borderRadius: 5,
+
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 12,
+        },
+        shadowOpacity: 0.58,
+        shadowRadius: 16.00,
+
+        elevation: 20,
     },
 
     imgBookSelected: {
         width: 200,
         height: 200,
-        borderRadius: 10,
-        marginTop: -10,
+        borderRadius: 5,
+    },
+
+    bookContainer: {        
+        alignSelf: 'center',
+        marginTop: 10,
+    },
+    
+    bookContent: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        
+        width: 200,
+        height: 190,
+
+        marginRight: 10,
+        marginLeft: 10,
+        borderRadius: 5,
+        backgroundColor: '#F0F0F4',
+
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 12,
+        },
+        shadowOpacity: 0.5,
+        shadowRadius: 5,
+
+        elevation: 20,
+    },
+
+    textContentBookSelected: {
+        alignItems: 'flex-start',
+        justifyContent: 'center',
+        
+        width: '95%',
+        height: 150,
+        
+        marginTop: 10,
+        padding: 5,
+    },
+
+    textContent: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        
+        width: 170,
+        height: 100,
+        
+        marginTop: 0,
+        padding: 10,
+    },
+
+    imgBook: {
+        width: 100,
+        height: 100,
+        borderRadius: 5,
+        marginTop: 20,
     },
 
     textTitleBookSelected: {
-        color: '#5c5c5c',
+        color: '#000',
         fontSize: 20,
         fontFamily: 'monosoto',
         fontWeight:'bold',
         marginBottom: 5,
     },
+
     textPriceBookSelected: {
         color: '#6ABCB0',
         fontSize: 25,
@@ -163,53 +275,6 @@ const styles = StyleSheet.create({
         color: '#5c5c5c',
     },
 
-    bookContainer: {        
-        alignSelf: 'center',
-        marginTop: 10,
-    },
-    
-    bookContent: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        
-        width: 200,
-        height: 200,
-
-        marginRight: 10,
-        marginLeft: 10,
-        borderRadius: 10,
-        backgroundColor: '#F0F0F4',
-    },
-
-    textContentBookSelected: {
-        alignItems: 'flex-start',
-        justifyContent: 'center',
-        
-        width: '95%',
-        height: 150,
-        
-        marginTop: 20,
-        padding: 5,
-    },
-
-    textContent: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        
-        width: 170,
-        height: 100,
-        
-        marginTop: 5,
-        padding: 10,
-    },
-
-    imgBook: {
-        width: 100,
-        height: 100,
-        borderRadius: 10,
-        marginTop: 20,
-    },
-
     loadingContainer: {
         flex: 1,
         alignItems: 'center', 
@@ -217,11 +282,11 @@ const styles = StyleSheet.create({
     },
 
     loadingText: {
-        fontSize: 25, 
+        fontSize: 20, 
         fontFamily: 'monospace', 
         fontWeight: 'normal',
+        color: '#5c5c5c',
     },
 })
-
 
 export default BookList;

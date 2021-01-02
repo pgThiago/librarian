@@ -5,8 +5,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import BookList from '../pages/BookList';
-import MoreBookInfo from '../components/MoreBookInfo';
-import RepoView from '../components/RepoView';
 
 const Stack = createStackNavigator();
 
