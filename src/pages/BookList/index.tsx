@@ -121,7 +121,7 @@ const BookList: React.FC = () => {
 const styles = StyleSheet.create({    
 
     container: {
-        backgroundColor: '#FFF',
+        backgroundColor: '#F0F0F4',
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -189,7 +189,7 @@ const styles = StyleSheet.create({
         marginRight: 10,
         marginLeft: 10,
         borderRadius: 5,
-        backgroundColor: '#F0F0F4',
+        backgroundColor: '#FFF',
 
         shadowColor: "#000",
         shadowOffset: {
