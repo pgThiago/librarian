@@ -16,7 +16,7 @@
 ### Prerequisites to run:
     Node version: >=12
     yarn version: 1.22.10
-    Set up your environment: https://reactnative.dev/docs/environment-setup (React Native CLI Quickstart)
+    Set up your environment: [](https://reactnative.dev/docs/environment-setup) (React Native CLI Quickstart)
 
 ---
 
