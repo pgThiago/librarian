@@ -4,23 +4,52 @@
   height="30%"/>
 </p>
 
----
-
-## API and [Web application](https://cadbook.herokuapp.com/) developed by [Ewerton Bello](https://github.com/EwertonBello/CadBook), right from Abaeté.
-
----
-
-# How to run on your phone:
-  1 - Clone this repository.
-  
-  2 - Open the project on your terminal.
-  
-  3 - Run "yarn" in the root of the project (if you have 'yarn' installed) to install all the dependencies.
-  
-  4 - Enable USB debug on your phone in "Developer Options" or something like that.
-  
-  5 - Connect your phone using USB.
-  
-  6 - run "react-native run-android" (or "run-ios").
+## Librarian
+#### Simple app to display a list of books in a horizontal Flatlist.
 
 ---
+
+#### API and web application developed by [Ewerton Bello](https://github.com/EwertonBello/CadBook) straight from Abaeté.
+
+---
+
+### Prerequisites to run:
+    Node version: >=12
+    yarn version: 1.22.10
+    Set up your environment: https://reactnative.dev/docs/environment-setup (React Native CLI Quickstart)
+
+---
+
+### Getting started:
+### These instructions will get you a copy of the project up and running on your local machine for development.
+
+1 - Clone the repository using `git clone`.
+
+2 - Navigate to the root of the project.
+
+3 - Run ``yarn`` to install all the dependencies present in package.json.
+
+4 - Enable USB debug on your phone in "Developer Options" or something like that.
+
+5 - Connect your phone using USB.
+
+6 - Run `react-native run-android` (or `run-ios` if your have money).
+
+---
+
+### API:
+#### https://cadbook.herokuapp.com/api/v1/
+
+### Web application: 
+#### https://cadbook.herokuapp.com/
+
+---
+
+### Built With:
+    React Native
+    Typescript
+
+---
+
+### License:
+#### This project is licensed under the MIT License - see the LICENSE file for details.

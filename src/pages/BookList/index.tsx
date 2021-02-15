@@ -43,7 +43,6 @@ const BookList: React.FC = () => {
 
     function handleSearchBook(inputParam: string){
         setInputText(inputParam);
-        console.log(inputText)
         for(const book of books){
             if(book.title.toLowerCase().includes(inputText.toLowerCase())){
                 console.log(inputText.toLowerCase());
