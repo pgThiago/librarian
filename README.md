@@ -38,7 +38,7 @@
 ---
 
 ### API:
-#### https://cadbook.herokuapp.com/api/v1/
+#### https://cadbook.herokuapp.com/api/v1/books
 
 ### Web application: 
 #### https://cadbook.herokuapp.com/
